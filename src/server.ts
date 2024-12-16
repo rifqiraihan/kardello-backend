@@ -4,10 +4,11 @@ import { PrismaClient } from '@prisma/client';
 import * as trpcExpress from '@trpc/server/adapters/express';
 import { appRouter } from './router';
 import { createContext } from './context';
-const serverless = require('serverless-http');
 
 const prisma = new PrismaClient();
 const app = express();
+const serverless = require('serverless-http');
+
 
 // Middleware setup
 app.use(cors());
@@ -23,8 +24,17 @@ app.use(
 );
 
 app.get('/', (req, res) => {
-  res.send('Hello, kardelo!');
+  res.send('Hello, kardalo!');
 });
 
-// Export for serverless (for platforms like Vercel, AWS Lambda)
-module.exports.handler = serverless(app);
+/// Check if we are in a serverless environment (Vercel) or local
+//if (process.env.VERCEL === '1') {
+  // Export for serverless (Vercel will use this handler)
+  module.exports.handler = serverless(app);
+// } else {
+//   // Start the server for local development
+  const port = process.env.PORT || 8080;  // Default to 8080 if no PORT env variable is set
+  app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+  });
+
