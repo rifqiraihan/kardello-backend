@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/kardeloApi/(.*)", "destination": "/kardeloApi/$1" },
+    { "source": "/(.*)", "destination": "/kardeloApi" }
+  ]
+}
