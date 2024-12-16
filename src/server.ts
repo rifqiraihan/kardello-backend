@@ -28,13 +28,13 @@ app.get('/', (req, res) => {
 });
 
 /// Check if we are in a serverless environment (Vercel) or local
-if (process.env.VERCEL === '1') {
+//if (process.env.VERCEL === '1') {
   // Export for serverless (Vercel will use this handler)
   module.exports.handler = serverless(app);
-} else {
-  // Start the server for local development
-  const port = process.env.PORT || 8080;  // Default to 8080 if no PORT env variable is set
-  app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-  });
-}
+// } else {
+//   // Start the server for local development
+//   const port = process.env.PORT || 8080;  // Default to 8080 if no PORT env variable is set
+//   app.listen(port, () => {
+//     console.log(`Server is running on http://localhost:${port}`);
+//   });
+// }
