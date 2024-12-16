@@ -22,7 +22,7 @@ app.use(
 );
 
 // Start server for production and local environments
-const port = process.env.PORT || 4000;  // Default to 8080 if no PORT env variable is set
+const port = process.env.PORT || 8080;  // Default to 8080 if no PORT env variable is set
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
